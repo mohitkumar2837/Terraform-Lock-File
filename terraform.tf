@@ -1,6 +1,12 @@
-resource local_file "local" {
-    filename = "test.txt"
-    content = "this is test file"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
 }
 
-provider "local" {}
+provider "aws" {
+  region = var.aws_region
+}
