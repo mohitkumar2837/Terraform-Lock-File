@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-variable "aws_region" {
-  type    = string
-  default = "ap-south-1"
+
+provider "aws" {
+  region = var.aws_region
 }
