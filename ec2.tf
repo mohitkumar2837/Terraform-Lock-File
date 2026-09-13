@@ -6,11 +6,14 @@ resource "aws_key_pair" "ec2_key" {
 }
 
 
-
 resource "aws_instance" "my_ec2" {
-  count         = 2    
+
   ami           = var.ami_id
-  instance_type = var.instance_type
+  instance_type = each.value
+    for_each = [{
+    "ec2-server-micro" = "t3.micro"
+    "ec2-server-small" = "t3.small"
+}]   
 
   key_name = aws_key_pair.ec2_key.key_name
   user_data = file("script.sh")
@@ -20,6 +23,6 @@ resource "aws_instance" "my_ec2" {
   ]
 
   tags = {
-    Name = var.instance_name
+    Name = each.key
   }
 }
