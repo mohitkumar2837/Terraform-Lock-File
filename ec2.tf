@@ -7,10 +7,10 @@ resource "aws_key_pair" "ec2_key" {
 
 
 resource "aws_instance" "my_ec2" {
- for_each = [{
+ for_each = tomap({
     "ec2-server-micro" = "t3.micro"
     "ec2-server-small" = "t3.small"
-  }] 
+  })
   ami           = var.ami_id
   instance_type = each.value
    
