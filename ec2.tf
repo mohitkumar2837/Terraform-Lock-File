@@ -11,6 +11,8 @@ resource "aws_instance" "my_ec2" {
     "ec2-server-micro" = "t3.micro"
     "ec2-server-small" = "t3.small"
   })
+
+  depends_on = [ aws_key_pair.ec2_key, aws_security_group.ec2_sg ]
   ami           = var.ami_id
   instance_type = each.value
    
