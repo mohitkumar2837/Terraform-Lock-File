@@ -8,10 +8,10 @@ variable "ami_id" {
   default = "ami-01a00762f46d584a1"
 }
 
-# variable "instance_type" {
-#   type    = string
-#   default = "t3.micro"
-# }
+variable "instance_type" {
+  type    = string
+  default = "t3.micro"
+}
 
 # variable "instance_name" {
 #   type    = string
@@ -32,7 +32,7 @@ variable "instance_type" {
 variable "my_environment" {
   description = "Deployment environment (dev, staging, prd)"
   type        = string
-  default     = "dev"
+  default     = "prd"
 
   validation {
     condition     = contains(["dev", "staging", "prd"], var.my_environment)
