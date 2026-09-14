@@ -1,6 +1,6 @@
 resource "aws_key_pair" "ec2_key" {
   key_name   = "ec2-key"
-  public_key = file(pathexpand("~/.ssh/ec2-key.pub"))
+  public_key = file("ec2-key.pub")
 }
 
 
@@ -86,7 +86,7 @@ resource "aws_security_group" "my_security_group" {
   vpc_id      = aws_vpc.my_vpc.id
 
   tags = {
-    Name = "terraform-ec2-sg-1"
+    Name = "${var.my_environment}terraform-ec2-sg-1"
   }
 }
 
