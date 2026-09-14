@@ -1,7 +1,3 @@
-resource "aws_key_pair" "ec2_key" {
-  key_name   = "ec2-key-${terraform.workspace}"
-  public_key = file("ec2-key.pub")
-}
 
 
 # =========================
@@ -29,6 +25,10 @@ resource "aws_internet_gateway" "my_igw" {
   tags = {
     Name = "my-igw"
   }
+}
+resource "aws_key_pair" "ec2_key" {
+  key_name   = "ec2-key-${terraform.workspace}"
+  public_key = file("ec2-key.pub")
 }
 
 
