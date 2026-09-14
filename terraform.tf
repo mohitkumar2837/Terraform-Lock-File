@@ -3,7 +3,7 @@ terraform {
     bucket         = "dev-test-my-app-bucket-d-2026"
     key            = "terraform.tfstate"
     region         = "ap-south-1"
-    dynamodb_table = "dev-test-my-app-table-d"
+    use_lockfile = true
   }
   required_providers {
     aws = {
