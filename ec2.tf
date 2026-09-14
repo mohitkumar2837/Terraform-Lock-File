@@ -46,6 +46,15 @@ resource aws_vpc_security_group_egress_rule allow_all_traffic {
   ip_protocol       = "-1" # semantically equivalent to all ports
 }
 
+resource "aws_subnet" "my_subnet" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "ap-south-1a"
+
+  tags = {
+    Name = "my-subnet"
+  }
+}
 
 
 resource "aws_instance" "my_ec2" {
@@ -55,7 +64,8 @@ resource "aws_instance" "my_ec2" {
   depends_on = [ aws_key_pair.ec2_key, aws_security_group.my_security_group ]
   ami           = var.ami_id
   instance_type = var.instance_type
-   
+  subnet_id = aws_subnet.my_subnet.id
+
 
   key_name = aws_key_pair.ec2_key.key_name
   user_data = file("script.sh")
