@@ -1,5 +1,5 @@
 resource "aws_key_pair" "ec2_key" {
-  key_name   = "ec2-key"
+  key_name   = "ec2-key-${var.my_environment}"
   public_key = file("ec2-key.pub")
 }
 
