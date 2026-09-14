@@ -133,7 +133,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic" {
 # =========================
 
 resource "aws_instance" "my_ec2" {
-  count = 4
+  count = 1
 
   ami                         = var.ami_id
   instance_type               = var.instance_type
