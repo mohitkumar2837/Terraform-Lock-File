@@ -5,12 +5,18 @@ resource "aws_key_pair" "ec2_key" {
   public_key = file(pathexpand("~/.ssh/ec2-key.pub"))
 }
 
-resource aws_default_vpc default {
+
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
+
+  tags = {
+    Name = "my-vpc"
+  }
 }
 
 resource aws_security_group my_security_group  {
-  name        = "terraform-ec2-sg"
-  vpc_id      = aws_default_vpc.default.id  # interpolation
+  name        = "terraform-ec2-sg-1"
+  vpc_id      = aws_vpc.my_vpc.id  # interpolation
   description = "Security group for Terraform EC2"
 }
 
