@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "testbucket" {
-  bucket = "${var.my_environment}-test-my-app-bucket-d"
+  bucket = "${var.my_environment}-test-my-app-bucket-d-2026"
 
   tags = {
-    Name = "${var.my_environment}-test-my-app-bucket-d"
+    Name = "${var.my_environment}-test-my-app-bucket-d-2026"
   }
 }
 
