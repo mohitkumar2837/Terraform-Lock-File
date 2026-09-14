@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "${var.my_environment}-test-my-app-bucket-d-2026"
+    bucket         = "dev-test-my-app-bucket-d-2026"
     key            = "terraform.tfstate"
     region         = "ap-south-1"
-    dynamodb_table = "${var.my_environment}-test-my-app-table-d"
+    dynamodb_table = "dev-test-my-app-table-d"
   }
   required_providers {
     aws = {
