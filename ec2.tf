@@ -50,8 +50,6 @@ resource "aws_subnet" "my_subnet" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-south-1a"
-  map_public_ip_on_launch = true
-
   tags = {
     Name = "my-subnet"
   }
@@ -66,6 +64,7 @@ resource "aws_instance" "my_ec2" {
   ami           = var.ami_id
   instance_type = var.instance_type
   subnet_id = aws_subnet.my_subnet.id
+  associate_public_ip_address = true
 
 
   key_name = aws_key_pair.ec2_key.key_name
